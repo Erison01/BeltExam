@@ -111,7 +111,7 @@ public class MainController {
     }
 
     @GetMapping("/tables/{tableId}/edit")
-    public String edit(@PathVariable(name = "tableId")Long tableId,
+    public String editT(@PathVariable(name = "tableId")Long tableId,
                                  Model model, HttpSession session){
         if(session.getAttribute("loggedInUserId") == null){
 
@@ -123,9 +123,9 @@ public class MainController {
     }
 
     @PutMapping("/tables/{tableId}/edit")
-    public String update(@Valid @ModelAttribute("table")Tab table,
+    public String update(@Valid @ModelAttribute("table")Tab table,BindingResult result,
                             @PathVariable(name = "tableId")Long tableId,
-                            BindingResult result, HttpSession session){
+                             HttpSession session){
         if (result.hasErrors()){
             return "edit";
         }
